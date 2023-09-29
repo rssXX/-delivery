@@ -1,0 +1,17 @@
+.header-wrapper{
+    width: 1400px;
+    margin: 20px auto;
+
+    .navigation{
+        font-size: x-large;
+
+        a{
+            text-decoration: none;
+            color: black;
+
+            &.active{
+                color: rgb(219, 22, 22);
+            }
+        }
+    }
+}
