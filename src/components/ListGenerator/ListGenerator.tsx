@@ -3,12 +3,17 @@ import style from "./ListGenerator.module.scss"
 
 const ListGenerator: React.FC = () => {
   const refTextareaOne = React.useRef<HTMLTextAreaElement | null>(null)
-  const [textareaTwo, setTextareaTwo] = React.useState()
+  const [result, setResult] = React.useState(``)
 
   const clickButton = () => {
+
     if (refTextareaOne.current) {
-      const result = refTextareaOne.current.value.split("\n").filter(elem => elem.length != 0)
-      setTextareaTwo(result)
+      const text = refTextareaOne.current.value.split("\n").filter(elem => elem.length != 0)
+      console.log("all: ", text)
+
+      for (let i = 0; i < text.length; i++) {
+        setResult(result + `<li>${text[i]}</li>\n`)
+      }
     }
   }
 
@@ -16,7 +21,7 @@ const ListGenerator: React.FC = () => {
     <>
         <textarea ref={refTextareaOne} className={style.textarea}/>
         <button onClick={clickButton}>test</button>
-        <input type="text" value={textareaTwo} />
+        <div>{result}</div>
     </>
   )
 }
